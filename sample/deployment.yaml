@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kazu-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kazu-app
+  template:
+    metadata:
+      labels:
+        app: kazu-app
+    spec:
+      containers:
+        - name: web01
+          image: quay.io/kfukushige/sample_web
+          ports:
+           - containerPort: 80
